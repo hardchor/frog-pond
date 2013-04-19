@@ -1,0 +1,9 @@
+{
+  "name": "paper",
+  "version": "0.0.0",
+  "commit": "a6353def37e0d11367646f554b7dea27acc673de",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/paperjs/paper.js.git"
+  }
+}
