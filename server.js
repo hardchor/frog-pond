@@ -139,7 +139,13 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('frog.position', function (id, position) {
         frog = FrogFactory.get(id);
-        frog.position = position;
+
+        if (frog) {
+            frog.position = position;
+        }
+        else {
+            console.log('FROG NOT FOUND', id, position);
+        }
     });
 
     socket.on('disconnect', function () {
