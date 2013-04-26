@@ -7,8 +7,8 @@
     <file path="/layout.jade" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366369974627" ignored="false" />
     <file path="/index.jade" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366370302966" ignored="false" />
     <file path="/style.css" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366370436681" ignored="false" />
-    <file path="/script.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366380173992" ignored="false" />
-    <file path="/server.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366380090851" ignored="false" />
+    <file path="/script.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366980283811" ignored="false" />
+    <file path="/server.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366980618914" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,26 +27,48 @@
     <favorites_list name="game-brain" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="script.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/script.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="67" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.33515882">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="39" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="script.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/static/js/script.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="30" column="0" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/server.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="140" column="23" selection-start="3683" selection-end="3683" vertical-scroll-proportion="0.59952885">
+                  <folding>
+                    <element signature="e#4131#4325#0" expanded="false" />
+                    <element signature="e#4428#4475#0" expanded="false" />
+                    <element signature="e#4569#4596#0" expanded="false" />
+                    <element signature="n#!!block;n#NotFound#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="script.js" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/js/script.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="165" column="58" selection-start="5384" selection-end="5384" vertical-scroll-proportion="0.47938752">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -59,17 +81,17 @@
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/static/js/script.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="62" />
-    <option name="y" value="24" />
-    <option name="width" value="1858" />
-    <option name="height" value="1056" />
+    <option name="x" value="61" />
+    <option name="y" value="-4" />
+    <option name="width" value="1860" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -85,7 +107,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -96,93 +118,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game-brain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -197,7 +133,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="24" width="1858" height="1056" extended-state="6" />
+    <frame x="61" y="-4" width="1860" height="1085" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -281,6 +217,44 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#4131#4325#0" expanded="false" />
+            <element signature="e#4428#4475#0" expanded="false" />
+            <element signature="e#4569#4596#0" expanded="false" />
+            <element signature="n#!!block;n#NotFound#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="61" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="61" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="39" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#4131#4325#0" expanded="false" />
+            <element signature="e#4428#4475#0" expanded="false" />
+            <element signature="e#4569#4596#0" expanded="false" />
+            <element signature="n#!!block;n#NotFound#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="5" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
@@ -290,9 +264,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="1" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="100" column="1" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/initproject.bat">
@@ -317,41 +289,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/paper/dist/paper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="2" selection-start="481" selection-end="481" vertical-scroll-proportion="0.34" />
+        <state line="18" column="2" selection-start="481" selection-end="481" vertical-scroll-proportion="0.34">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="1" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.018619934">
-          <folding />
-        </state>
+        <state line="100" column="1" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.018619934" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="9" selection-start="69" selection-end="69" vertical-scroll-proportion="0.07447974">
-          <folding />
-        </state>
+        <state line="4" column="9" selection-start="69" selection-end="69" vertical-scroll-proportion="0.07447974" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="17" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.5958379">
+        <state line="32" column="17" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.5958379" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="39" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="67" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.33515882">
-          <folding />
+        <state line="140" column="23" selection-start="3683" selection-end="3683" vertical-scroll-proportion="0.59952885">
+          <folding>
+            <element signature="e#4131#4325#0" expanded="false" />
+            <element signature="e#4428#4475#0" expanded="false" />
+            <element signature="e#4569#4596#0" expanded="false" />
+            <element signature="n#!!block;n#NotFound#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

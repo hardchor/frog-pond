@@ -2,6 +2,7 @@
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
+    , _ = require('underscore')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
@@ -31,34 +32,122 @@ server.error(function (err, req, res, next) {
 });
 server.listen(port);
 
-var frogs = [];
+var frogs = [],
+    maxFrogs = 20;
+
+/**
+ * Returns a random integer between min and max
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function _getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function Frog() {
     var self = {};
 
-    self.id = frogs.length + 1;
+    self.id = _getRandomInt(1, 10000);
+    self.gender = !!_getRandomInt(0, 1) ? 'm' : 'f';
+    self.canMate = false;
+    self.maxAge = 100;
+    self.age = 0;
+
+    self.position = {
+        x: 0,
+        y: 0
+    };
+
+    self.tick = function () {
+        self.age++;
+        self.canMate = self.age < (self.maxAge * 0.8) && self.age > (self.maxAge * 0.2);
+    };
 
     return self;
 }
 
+var FrogFactory = {
+    create: function () {
+        var frog = new Frog();
+        frogs.push(frog);
+
+        return frog;
+    },
+    mate:   function (firstFrog, secondFrog) {
+        if (firstFrog.canMate && secondFrog.canMate) {
+            console.log('MATING', firstFrog.id, secondFrog.id);
+            var frog = new Frog();
+            frogs.push(frog);
+
+            firstFrog.canMate = false;
+            secondFrog.canMate = false;
+
+            // cooldown period
+            setTimeout(function () {
+                console.log('MATING OVER');
+                firstFrog.canMate = true;
+                secondFrog.canMate = true;
+            }, 5000);
+
+            return frog;
+        }
+    },
+    get:    function (id) {
+        var returnFrog;
+
+        _.each(frogs, function (frog) {
+            if (id === frog.id) {
+                returnFrog = frog;
+            }
+        });
+
+        return returnFrog;
+    }
+};
+
 //Setup Socket.IO
 var io = io.listen(server);
 
+var tick;
 
 io.sockets.on('connection', function (socket) {
     console.log('Client Connected');
 
-    setInterval(function() {
-        var frog = new Frog();
-        frogs.push(frog);
+    tick = setInterval(function () {
+        if (frogs.length <= maxFrogs) {
+            var frog = FrogFactory.create();
 
-        socket.emit('frog.create', frog);
+            socket.emit('frog.create', frog);
+        }
+
+        _.each(frogs, function (frog, key) {
+            frog.tick();
+            socket.emit('frog.update', frog);
+
+            if (frog.age >= frog.maxAge) {
+                socket.emit('frog.destroy', frog);
+                frogs.splice(key, 1);
+            }
+        });
     }, 1000);
-//    socket.on('message', function (data) {
-//        socket.emit('server_message', data);
-//    });
+
+    socket.on('frog.mate', function (firstFrog, secondFrog) {
+        firstFrog = FrogFactory.get(firstFrog.id);
+        secondFrog = FrogFactory.get(secondFrog.id);
+
+        FrogFactory.mate(firstFrog, secondFrog);
+    });
+
+    socket.on('frog.position', function (id, position) {
+        frog = FrogFactory.get(id);
+        frog.position = position;
+    });
 
     socket.on('disconnect', function () {
+        clearInterval(tick);
+
+        frogs = [];
+        frogs.length = 0;
+
         console.log('Client Disconnected.');
     });
 });
