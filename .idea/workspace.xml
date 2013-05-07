@@ -5,10 +5,10 @@
     <ignored path="game-brain.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/layout.jade" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366369974627" ignored="false" />
-    <file path="/index.jade" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366370302966" ignored="false" />
+    <file path="/index.jade" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1367939439992" ignored="false" />
     <file path="/style.css" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366370436681" ignored="false" />
-    <file path="/script.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366980283811" ignored="false" />
-    <file path="/server.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1366980851457" ignored="false" />
+    <file path="/script.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1367938220998" ignored="false" />
+    <file path="/server.js" changelist="641ce1d3-9c13-4185-805c-cc067e0a27f7" time="1367941632507" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
           <file leaf-file-name="script.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/js/script.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="30" column="0" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0">
+                <state line="148" column="20" selection-start="4623" selection-end="4628" vertical-scroll-proportion="-10.882353">
                   <folding />
                 </state>
               </provider>
@@ -42,13 +42,19 @@
           <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="111" column="41" selection-start="2863" selection-end="2863" vertical-scroll-proportion="0.19905771">
+                <state line="197" column="25" selection-start="5211" selection-end="5211" vertical-scroll-proportion="0.7597173">
                   <folding>
-                    <element signature="e#4248#4442#0" expanded="false" />
-                    <element signature="e#4545#4592#0" expanded="false" />
-                    <element signature="e#4686#4713#0" expanded="false" />
-                    <element signature="n#!!block;n#NotFound#0" expanded="false" />
+                    <element signature="e#6010#6037#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/index.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="14" column="26" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -60,7 +66,7 @@
           <file leaf-file-name="script.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/script.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="165" column="58" selection-start="5384" selection-end="5384" vertical-scroll-proportion="0.47938752">
+                <state line="157" column="23" selection-start="4892" selection-end="4903" vertical-scroll-proportion="0.65371025">
                   <folding />
                 </state>
               </provider>
@@ -78,9 +84,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/static/js/script.js" />
         <option value="$PROJECT_DIR$/server.js" />
       </list>
@@ -107,7 +113,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -118,7 +124,43 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-brain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-brain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-brain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-brain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-brain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -221,10 +263,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="0" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#4248#4442#0" expanded="false" />
-            <element signature="e#4545#4592#0" expanded="false" />
-            <element signature="e#4686#4713#0" expanded="false" />
-            <element signature="n#!!block;n#NotFound#0" expanded="false" />
+            <element signature="e#6010#6037#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -247,10 +286,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="39" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#4248#4442#0" expanded="false" />
-            <element signature="e#4545#4592#0" expanded="false" />
-            <element signature="e#4686#4713#0" expanded="false" />
-            <element signature="n#!!block;n#NotFound#0" expanded="false" />
+            <element signature="e#6010#6037#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -299,31 +335,30 @@
         <state line="100" column="1" selection-start="1919" selection-end="1919" vertical-scroll-proportion="0.018619934" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="9" selection-start="69" selection-end="69" vertical-scroll-proportion="0.07447974" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="17" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.5958379" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="26" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0">
+        <state line="148" column="20" selection-start="4623" selection-end="4628" vertical-scroll-proportion="-10.882353">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="41" selection-start="2863" selection-end="2863" vertical-scroll-proportion="0.19905771">
+        <state line="197" column="25" selection-start="5211" selection-end="5211" vertical-scroll-proportion="0.7597173">
           <folding>
-            <element signature="e#4248#4442#0" expanded="false" />
-            <element signature="e#4545#4592#0" expanded="false" />
-            <element signature="e#4686#4713#0" expanded="false" />
-            <element signature="n#!!block;n#NotFound#0" expanded="false" />
+            <element signature="e#6010#6037#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -3,3 +3,13 @@ extends layout
 block content
     div(id='canvasContainer')
         canvas(id='pond')
+        div(id='frogStats')
+            p(class='frogNum')='Frogs: '
+                strong='0'
+        div(id='pondStats')
+            p(class='algaeNum')='Algae: '
+                strong='0'
+            p(class='oxygenNum')='Oxygen: '
+                strong='0'
+            p(class='nitrogenNum')='Nitrogen: '
+                strong='0'

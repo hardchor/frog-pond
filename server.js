@@ -33,7 +33,11 @@ server.error(function (err, req, res, next) {
 server.listen(port);
 
 var frogs = [],
-    maxFrogs = 20;
+    maxFrogs = 20,
+    socket,
+    algae = 100,
+    oxygen = 100,
+    nitrogen = 10000;
 
 /**
  * Returns a random integer between min and max
@@ -43,7 +47,7 @@ function _getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function Frog() {
+function Frog(position) {
     var self = {};
 
     self.id = _getRandomInt(1, 10000);
@@ -52,7 +56,7 @@ function Frog() {
     self.maxAge = 100;
     self.age = 0;
 
-    self.position = {
+    self.position = position || {
         x: 0,
         y: 0
     };
@@ -60,35 +64,41 @@ function Frog() {
     self.tick = function () {
         self.age++;
         self.canMate = self.age < (self.maxAge * 0.8) && self.age > (self.maxAge * 0.2);
+
+        // eat!
+        // @todo model consumption (based on algae level), health (based on consumption, age)
+        algae--;
     };
 
     return self;
 }
 
 var FrogFactory = {
-    create: function () {
-        var frog = new Frog();
+    create: function (position) {
+        var frog = new Frog(position);
         frogs.push(frog);
+        socket.emit('frog.create', frog);
 
         return frog;
     },
     mate:   function (firstFrog, secondFrog) {
         if (firstFrog.canMate && secondFrog.canMate) {
-            console.log('MATING', firstFrog.id, secondFrog.id);
-            var frog = new Frog();
-            frogs.push(frog);
+            var frog = FrogFactory.create(firstFrog.position);
 
             firstFrog.canMate = false;
             secondFrog.canMate = false;
 
-            // cooldown period
+            socket.emit('frog.update', firstFrog);
+            socket.emit('frog.update', secondFrog);
+
+            // "cooldown" period
             setTimeout(function () {
-                console.log('MATING OVER');
                 firstFrog.canMate = true;
                 secondFrog.canMate = true;
-            }, 5000);
 
-            return frog;
+                socket.emit('frog.update', firstFrog);
+                socket.emit('frog.update', secondFrog);
+            }, 10000);
         }
     },
     get:    function (id) {
@@ -109,24 +119,53 @@ var io = io.listen(server);
 
 var tick;
 
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function (websocket) {
+    socket = websocket;
     console.log('Client Connected');
 
+    // initial population
+    for (var i = 0; i < maxFrogs; i++) {
+        FrogFactory.create();
+    }
     tick = setInterval(function () {
-        if (frogs.length <= maxFrogs) {
-            var frog = FrogFactory.create();
+        /**
+         * 1 algae transforms 1 nitrogen into 1 oxygen
+         */
+        var growth = Math.max(0.9, Math.min(nitrogen / algae, 1.5));
+        algae = Math.round(algae * growth);
 
-            socket.emit('frog.create', frog);
-        }
+        var consumption = algae < nitrogen ? algae : nitrogen;
+
+        nitrogen = nitrogen - consumption;
+        oxygen = oxygen + consumption;
 
         _.each(frogs, function (frog, key) {
             frog.tick();
             socket.emit('frog.update', frog);
 
             if (frog.age >= frog.maxAge) {
-                socket.emit('frog.destroy', frog);
+                socket.emit('frog.destroy', frog.id);
                 frogs.splice(key, 1);
+
+                nitrogen += 100;
             }
+        });
+
+        socket.emit("frogs.stats", {
+            num: frogs.length
+        });
+
+        socket.emit("algae.stats", {
+            num: algae
+        });
+
+        // oxygen not needed atm (frogs, not fish ;) ) - keep for later
+        socket.emit("oxygen.stats", {
+            num: oxygen
+        });
+
+        socket.emit("nitrogen.stats", {
+            num: nitrogen
         });
     }, 1000);
 
@@ -137,14 +176,15 @@ io.sockets.on('connection', function (socket) {
         FrogFactory.mate(firstFrog, secondFrog);
     });
 
-    socket.on('frog.position', function (id, position) {
-        frog = FrogFactory.get(id);
+    socket.on('frog.position', function (frog, position) {
+        serverFrog = FrogFactory.get(frog.id);
 
-        if (frog) {
-            frog.position = position;
+        if (serverFrog) {
+            serverFrog.position = position;
         }
         else {
-            console.log('FROG NOT FOUND', id, position);
+            // client has out of date information
+            socket.emit('frog.destroy', frog.id);
         }
     });
 
@@ -153,10 +193,16 @@ io.sockets.on('connection', function (socket) {
 
         frogs = [];
         frogs.length = 0;
+        algae = 100;
+        oxygen = 100;
+        nitrogen = 10000;
 
         console.log('Client Disconnected.');
     });
 });
+
+// @todo manage food resources
+// @todo simulate speed, strength, max age etc.
 
 
 ///////////////////////////////////////////
@@ -168,7 +214,7 @@ io.sockets.on('connection', function (socket) {
 server.get('/', function (req, res) {
     res.render('index.jade', {
         locals: {
-            title: 'Your Page Title', description: 'Your Page Description', author: 'Your Name', analyticssiteid: 'XXXXXXX'
+            title: 'Frogs!', description: 'The ultimate frog simulator', author: 'Burkhard Reffeling', analyticssiteid: 'XXXXXXX'
         }
     });
 });
