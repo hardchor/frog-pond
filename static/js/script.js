@@ -1,15 +1,19 @@
 $(document).ready(function () {
     var socket = io.connect('http://localhost'),
         canvas = document.getElementById('pond'),
-        frogs = [];
+        frogs = [],
+        algae = [];
 
     paper.setup(canvas);
 
     var Point = paper.Point,
         view = paper.view,
-        Rectangle = paper.Rectangle,
         Path = paper.Path,
-        RgbColor = paper.RgbColor;
+        RgbColor = paper.RgbColor,
+        Layer = paper.Layer;
+
+    var AlgaeLayer = new Layer(),
+        FrogLayer = new Layer();
 
     /**
      * Returns a random integer between min and max
@@ -67,10 +71,6 @@ $(document).ready(function () {
             // destination point:
             frogView.position = frogView.position.add(vector.divide(100));
 
-            // Set the content of the text item to be the length of the vector.
-            // I.e. the distance it has to travel still:
-//        frog.content = Math.round(vector.length);
-
             // If the distance between the path and the destination is less
             // than 5, we define a new random point in the view to move the
             // path to:
@@ -106,6 +106,26 @@ $(document).ready(function () {
         };
 
         self.update(data);
+
+        FrogLayer.addChild(frogView);
+
+        return self;
+    }
+
+    function Alga() {
+        var self = {},
+            posX = _getRandomInt(0, view.size.width),
+            posY = _getRandomInt(0, view.size.height),
+            algaView = new Path.Rectangle(posX, posY, 10, 10);
+
+        algaView.fillColor = "#A5FFA9";
+        algaView.smooth();
+
+        self.destroy = function() {
+            algaView.remove();
+        };
+
+        AlgaeLayer.addChild(algaView);
 
         return self;
     }
@@ -148,6 +168,14 @@ $(document).ready(function () {
 
     socket.on('algae.stats', function (data) {
         $('.algaeNum').find('strong').text(data.num);
+
+        while(algae.length < data.num) {
+            algae.push(new Alga());
+        }
+        while(algae.length > data.num) {
+            var alga = algae.shift();
+            alga.destroy();
+        }
     });
 
     socket.on('oxygen.stats', function (data) {
@@ -190,17 +218,6 @@ $(document).ready(function () {
 
 
     // draw
-    paper.view.draw();
-
-//  var socket = io.connect();
-//
-//  $('#sender').bind('click', function() {
-//   socket.emit('message', 'Message Sent on ' + new Date());
-//  });
-//
-//  socket.on('server_message', function(data){
-//   $('#receiver').append('<li>' + data + '</li>');
-//  });
-
+    view.draw();
 
 });

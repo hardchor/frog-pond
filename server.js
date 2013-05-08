@@ -32,9 +32,11 @@ server.error(function (err, req, res, next) {
 });
 server.listen(port);
 
-var frogs = [],
+
+// App
+var socket,
+    frogs = [],
     maxFrogs = 20,
-    socket,
     algae = 100,
     oxygen = 100,
     nitrogen = 10000;
@@ -42,13 +44,20 @@ var frogs = [],
 /**
  * Returns a random integer between min and max
  * Using Math.round() will give you a non-uniform distribution!
+ *
+ * @param min
+ * @param max
+ * @returns {number}
+ * @private
  */
 function _getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function Frog(position) {
-    var self = {};
+    var self = {},
+        consumption = 0.1,
+        health = 10;
 
     self.id = _getRandomInt(1, 10000);
     self.gender = !!_getRandomInt(0, 1) ? 'm' : 'f';
@@ -63,11 +72,33 @@ function Frog(position) {
 
     self.tick = function () {
         self.age++;
+        // @todo mate based on health, not age
         self.canMate = self.age < (self.maxAge * 0.8) && self.age > (self.maxAge * 0.2);
 
+        // consumption increases/decreases between 0.9 and 1.1, based on food levels and age
+        if (self.age > (self.maxAge * 0.2)) {
+            consumption *= 1.1;
+        }
+        else if (self.age < (self.maxAge * 0.8)) {
+            consumption *= 0.9;
+        }
+
         // eat!
-        // @todo model consumption (based on algae level), health (based on consumption, age)
-        algae--;
+        // model health (based on consumption, age)
+        if (algae > Math.round(consumption)) {
+            algae -= Math.round(consumption);
+            health = Math.min(health * 1.1, 100);
+        }
+        else {
+            health *= 0.9;
+        }
+
+        // die?
+        console.log(self.age, consumption, health);
+    };
+
+    self.die = function () {
+        nitrogen += 100;
     };
 
     return self;
@@ -102,15 +133,15 @@ var FrogFactory = {
         }
     },
     get:    function (id) {
-        var returnFrog;
+        var foundFrog;
 
         _.each(frogs, function (frog) {
             if (id === frog.id) {
-                returnFrog = frog;
+                foundFrog = frog;
             }
         });
 
-        return returnFrog;
+        return foundFrog;
     }
 };
 
@@ -146,8 +177,7 @@ io.sockets.on('connection', function (websocket) {
             if (frog.age >= frog.maxAge) {
                 socket.emit('frog.destroy', frog.id);
                 frogs.splice(key, 1);
-
-                nitrogen += 100;
+                frog.die();
             }
         });
 

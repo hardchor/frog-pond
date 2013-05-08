@@ -2,7 +2,7 @@ extends layout
 
 block content
     div(id='canvasContainer')
-        canvas(id='pond')
+        canvas(id='pond', data-paper-keepalive='true')
         div(id='frogStats')
             p(class='frogNum')='Frogs: '
                 strong='0'
