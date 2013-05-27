@@ -1,6 +1,10 @@
 Frog Pond
 =========
 
+Install dependencies:
+
+    npm install
+
 To start the server:
 
     node server.js
